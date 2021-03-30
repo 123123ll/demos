@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.UUID;
+
 /**
  * @ClassName: Recursion
  * @Description: 递归
@@ -18,5 +20,6 @@ public class Recursion {
 
     public static void main(String[] args) {
         PrintN(2);
+        System.out.println(UUID.randomUUID());
     }
 }
