@@ -16,10 +16,9 @@ public class sbWangShuLiang {
     }
     public static int add(int i){
         if (i>3){
-            return 1;
+            return 2;
         }else {
-            return i+add(i
-            );
+            return i+add(i+1);
         }
 
     };
