@@ -1,11 +1,10 @@
 package com.example.demo;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.Channel;
 import java.nio.channels.FileChannel;
-import java.util.Arrays;
 
 /**
  * @ClassName: BufferTest
@@ -39,6 +38,7 @@ public class BufferTest {
             while (allocate.hasRemaining()){
                     byte[] bytes = new byte[3];
                     byte[] array = allocate.get(bytes, 0, bytes.length).array();
+                System.out.println("二进制字符串："+conver2HexStr(array));
                      System.out.println(new String(bytes,"UTF-8"));
 //                    for (int i1 = 1; i1 < array.length+1; i1++) {
 //
@@ -99,4 +99,32 @@ public class BufferTest {
 //        System.out.println(new String(byteBuffer.array()));
 //        fileInputStream.close();
 //    }
+
+
+    /**
+     * byte数组转换为二进制字符串,每个字节以","隔开
+     * **/
+    public static String conver2HexStr(byte [] b)
+    {
+        StringBuffer result = new StringBuffer();
+        for(int i = 0;i<b.length;i++)
+        {
+            result.append(Long.toString(b[i] & 0xff, 2)+",");
+        }
+        return result.toString().substring(0, result.length()-1);
+    }
+
+    /**
+     * 二进制字符串转换为byte数组,每个字节以","隔开
+     * **/
+    public static byte[] conver2HexToByte(String hex2Str)
+    {
+        String [] temp = hex2Str.split(",");
+        byte [] b = new byte[temp.length];
+        for(int i = 0;i<b.length;i++)
+        {
+            b[i] = Long.valueOf(temp[i], 2).byteValue();
+        }
+        return b;
+    }
 }

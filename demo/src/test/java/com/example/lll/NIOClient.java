@@ -26,7 +26,7 @@ public class NIOClient {
 
     public static String IP = "127.0.0.1";
     static Selector selector;
-    final static int port = 8989;
+    final static int port = 9000;
     static Charset charset = Charset.forName("UTF-8");
     private static SocketChannel socketChannel;
 
